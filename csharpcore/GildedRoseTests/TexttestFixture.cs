@@ -59,6 +59,7 @@ namespace GildedRoseTests
                 Console.WriteLine("");
                 app.UpdateQuality();
             }
+            Console.ReadLine();
         }
     }
 }
