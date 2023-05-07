@@ -11,3 +11,18 @@
 	- [OK] "Backstage passes", Quality increases by 2 when there are 10 days or less 
 	- [OK] "Backstage passes", Quality increases  by 3 when there are 5 days or less
 	- [OK] "Backstage passes", Quality drops to 0 after the concert
+
+## Refactoring
+	- Smeels: 
+		- Long method
+		- goku structure
+	- Objetives
+		- Legibility
+.....
+
+
+## New functionality
+
+We have recently signed a supplier of conjured items. This requires an update to our system:
+
+	- "Conjured" items degrade in Quality twice as fast as normal items
