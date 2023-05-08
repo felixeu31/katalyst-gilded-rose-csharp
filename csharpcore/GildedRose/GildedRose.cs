@@ -33,6 +33,10 @@ namespace GildedRoseKata
             {
                 UpdateBackStagePassesQuality(item);
             }
+            else if (item.Name.Contains("Conjured"))
+            {
+                UpdateConjuredItemQuality(item);
+            }
             else
             {
                 UpdateNormalItemQuality(item);
@@ -51,7 +55,7 @@ namespace GildedRoseKata
                     }
                     else
                     {
-                        item.Quality = item.Quality - 1;
+                        item.Quality = 0;
                     }
                 }
                 else
@@ -59,6 +63,31 @@ namespace GildedRoseKata
                     if (item.Quality > 0)
                     {
                         item.Quality = item.Quality - 1;
+                    }
+                }
+            }
+        }
+
+        private static void UpdateConjuredItemQuality(Item item)
+        {
+            if (item.Quality > 0)
+            {
+                if (item.SellIn < 0)
+                {
+                    if (item.Quality > 3)
+                    {
+                        item.Quality = item.Quality - 4;
+                    }
+                    else
+                    {
+                        item.Quality = 0;
+                    }
+                }
+                else
+                {
+                    if (item.Quality > 1)
+                    {
+                        item.Quality = item.Quality - 2;
                     }
                 }
             }
