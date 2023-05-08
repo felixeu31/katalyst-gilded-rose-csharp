@@ -39,7 +39,7 @@ namespace GildedRoseTests.UnitTests
         public void UpdateQuality_WhenSimpleItemWithQualityEqualsOver0AndSellInDatePassed_DecreaseQualityTwice()
         {
             // Arrange
-            IList<Item> Items = new List<Item> { new Item { Name = "Elixir of the Mongoose", SellIn = -1, Quality = 10 } };
+            IList<Item> Items = new List<Item> { new Item { Name = "Elixir of the Mongoose", SellIn = 0, Quality = 10 } };
             GildedRose app = new GildedRose(Items);
             
             // Act
@@ -47,6 +47,49 @@ namespace GildedRoseTests.UnitTests
             
             // Assert
             Assert.Equal(8, Items[0].Quality);
+        }
+
+        [Fact]
+        public void UpdateQuality_WhenConjuredItemWithQualityOver0_DecreaseQuality()
+        {
+            // Arrange
+            IList<Item> Items = new List<Item> { new Item { Name = "Conjured item", SellIn = 10, Quality = 10 } };
+            GildedRose app = new GildedRose(Items);
+
+            // Act
+            app.UpdateQuality();
+
+            // Assert
+            Assert.Equal(8, Items[0].Quality);
+        }
+
+        [Fact]
+        public void UpdateQuality_WhenConjuredItemWithQualityEqualsTo0_MaintainsQualityIn0()
+        {
+            // Arrange
+            IList<Item> Items = new List<Item> { new Item { Name = "Conjured item", SellIn = 10, Quality = 0 } };
+            GildedRose app = new GildedRose(Items);
+
+            // Act
+            app.UpdateQuality();
+
+            // Assert
+            Assert.Equal(0, Items[0].Quality);
+        }
+
+
+        [Fact]
+        public void UpdateQuality_WhenConjuredItemWithQualityEqualsOver0AndSellInDatePassed_DecreaseQualityTwice()
+        {
+            // Arrange
+            IList<Item> Items = new List<Item> { new Item { Name = "Conjured item", SellIn = 0, Quality = 10 } };
+            GildedRose app = new GildedRose(Items);
+
+            // Act
+            app.UpdateQuality();
+
+            // Assert
+            Assert.Equal(6, Items[0].Quality);
         }
 
 
