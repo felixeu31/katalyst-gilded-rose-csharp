@@ -26,29 +26,42 @@ namespace GildedRoseKata
                 return;
             }
 
-            if (item.Name == "Aged Brie" || item.Name == "Backstage passes to a TAFKAL80ETC concert")
+            if (item.Name == "Aged Brie")
             {
                 if (item.Quality < 50)
                 {
                     item.Quality = item.Quality + 1;
-
-                    if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+                }
+            }
+            else if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+            {
+                if (item.SellIn < 6)
+                {
+                    if (item.Quality < 48)
                     {
-                        if (item.SellIn < 11)
-                        {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
-                        }
-
-                        if (item.SellIn < 6)
-                        {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
-                        }
+                        item.Quality = item.Quality + 3;
+                    }
+                    else
+                    {
+                        item.Quality = 50;
+                    }
+                }
+                else if (item.SellIn < 11)
+                {
+                    if (item.Quality < 49)
+                    {
+                        item.Quality = item.Quality + 2;
+                    }
+                    else
+                    {
+                        item.Quality = 50;
+                    }
+                }
+                else
+                {
+                    if (item.Quality < 50)
+                    {
+                        item.Quality = item.Quality + 1;
                     }
                 }
             }
