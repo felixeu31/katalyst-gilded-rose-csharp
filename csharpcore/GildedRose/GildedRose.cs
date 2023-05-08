@@ -62,14 +62,7 @@ namespace GildedRoseKata
 
             if (item.SellIn < 0)
             {
-                if (item.Name == "Aged Brie")
-                {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality = item.Quality + 1;
-                    }
-                }
-                else
+                if (item.Name != "Aged Brie")
                 {
                     if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
                     {
