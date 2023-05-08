@@ -73,7 +73,7 @@ namespace GildedRoseKata
                 {
                     if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
                     {
-                        item.Quality = item.Quality - item.Quality;
+                        item.Quality = 0;
                     }
                     else
                     {
