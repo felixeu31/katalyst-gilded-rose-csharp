@@ -109,7 +109,7 @@ namespace GildedRoseTests.UnitTests
 
 
         [Fact]
-        public void UpdateQuality_WhenBackstagePasses_QualityIncreasesTwice()
+        public void UpdateQuality_WhenBackstagePassesAndSellInIsLessThan11_QualityIncreasesTwice()
         {
             // Arrange
             IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 9, Quality = 20 } };
@@ -123,7 +123,7 @@ namespace GildedRoseTests.UnitTests
         }
 
         [Fact]
-        public void UpdateQuality_WhenBackstagePasses_QualityIncreasesTriple()
+        public void UpdateQuality_WhenBackstagePassesAndSellIsLessThan6_QualityIncreasesTriple()
         {
             // Arrange
             IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 4, Quality = 20 } };
@@ -132,6 +132,34 @@ namespace GildedRoseTests.UnitTests
             // Act
             app.UpdateQuality();
             
+            // Assert
+            Assert.Equal(23, Items[0].Quality);
+        }
+
+        [Fact]
+        public void UpdateQuality_WhenBackstagePassesAndSellInJustPassed11_QualityIncreasesTwice()
+        {
+            // Arrange
+            IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 11, Quality = 20 } };
+            GildedRose app = new GildedRose(Items);
+
+            // Act
+            app.UpdateQuality();
+
+            // Assert
+            Assert.Equal(22, Items[0].Quality);
+        }
+
+        [Fact]
+        public void UpdateQuality_WhenBackstagePassesAndSellInJustPassed6_QualityIncreasesTriple()
+        {
+            // Arrange
+            IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 6, Quality = 20 } };
+            GildedRose app = new GildedRose(Items);
+
+            // Act
+            app.UpdateQuality();
+
             // Assert
             Assert.Equal(23, Items[0].Quality);
         }
