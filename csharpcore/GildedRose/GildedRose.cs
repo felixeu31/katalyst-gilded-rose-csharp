@@ -35,7 +35,11 @@ namespace GildedRoseKata
             }
             else if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
             {
-                if (item.SellIn < 6)
+                if (item.SellIn < 0)
+                {
+                    item.Quality = 0;
+                }
+                else if (item.SellIn < 6)
                 {
                     if (item.Quality < 48)
                     {
@@ -73,21 +77,11 @@ namespace GildedRoseKata
                 }
             }
 
-            if (item.SellIn < 0)
+            if (item.SellIn < 0 && item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
             {
-                if (item.Name != "Aged Brie")
+                if (item.Quality > 0)
                 {
-                    if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
-                    {
-                        item.Quality = 0;
-                    }
-                    else
-                    {
-                        if (item.Quality > 0)
-                        {
-                            item.Quality = item.Quality - 1;
-                        }
-                    }
+                    item.Quality = item.Quality - 1;
                 }
             }
         }
