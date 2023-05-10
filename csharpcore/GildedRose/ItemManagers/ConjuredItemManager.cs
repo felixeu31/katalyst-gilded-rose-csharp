@@ -4,13 +4,10 @@ namespace GildedRoseKata.ItemManagers
 {
     internal class ConjuredItemManager : ItemManager
     {
-        public void UpdateSellIn(Item item)
-        {
-            item.SellIn -= 1;
-        }
-
         public void UpdateQuality(Item item)
         {
+            item.SellIn -= 1;
+
             if (item.Quality > 0)
             {
                 if (item.SellIn < 0)

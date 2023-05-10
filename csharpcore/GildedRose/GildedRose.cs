@@ -17,7 +17,6 @@ namespace GildedRoseKata
             {
                 var itemManager = ItemManagerFactory.CreateItemManagerFrom(item.Name);
 
-                itemManager.UpdateSellIn(item);
                 itemManager.UpdateQuality(item);
             }
         }

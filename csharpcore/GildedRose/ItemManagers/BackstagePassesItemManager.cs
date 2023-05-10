@@ -4,13 +4,10 @@ namespace GildedRoseKata.ItemManagers
 {
     internal class BackstagePassesItemManager : ItemManager
     {
-        public void UpdateSellIn(Item item)
-        {
-            item.SellIn -= 1;
-        }
-
         public void UpdateQuality(Item item)
         {
+            item.SellIn -= 1;
+
             if (item.SellIn < 0)
             {
                 item.Quality = 0;
